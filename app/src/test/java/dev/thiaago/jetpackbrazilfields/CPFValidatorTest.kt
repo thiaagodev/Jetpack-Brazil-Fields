@@ -4,11 +4,6 @@ import dev.thiaago.jetpackbrazilfields.extensions.isCPF
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 class CPFValidatorTest {
     @Test
     fun test_cpf_validator_with_valid_cpfs() {
