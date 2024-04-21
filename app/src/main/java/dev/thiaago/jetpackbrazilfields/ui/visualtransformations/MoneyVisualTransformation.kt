@@ -8,7 +8,7 @@ import java.text.DecimalFormatSymbols
 import java.util.Locale
 
 class MoneyVisualTransformation(private val currencySymbol: String? = "") : VisualTransformation {
-    private val symbols = DecimalFormatSymbols.getInstance(Locale("pt"))
+    private val symbols = DecimalFormatSymbols.getInstance(Locale("pt", "br"))
 
     override fun filter(text: AnnotatedString): TransformedText {
         val thousandsSeparator = symbols.groupingSeparator
