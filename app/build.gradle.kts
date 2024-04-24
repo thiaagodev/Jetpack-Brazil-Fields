@@ -1,6 +1,22 @@
+import java.io.FileInputStream
+import java.util.Properties
+
+
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("maven-publish")
+}
+
+val githubProperties = Properties()
+githubProperties.load(FileInputStream(rootProject.file("github.properties")))
+
+fun getVersionName(): String {
+    return "0.0.1"
+}
+
+fun getArtificatId(): String {
+    return "jetpackbrazilfields"
 }
 
 android {
@@ -41,6 +57,30 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("gpr") {
+            run {
+                groupId = "dev.thiaago"
+                artifactId = getArtificatId()
+                version = getVersionName()
+                artifact("$buildDir/outputs/aar/app-release.aar")
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/thiaagodev/Jetpack-Brazil-Fields")
+            credentials {
+                username = githubProperties["gpr.usr"] as String? ?: System.getenv("GPR_USER")
+                password = githubProperties["gpr.key"] as String? ?: System.getenv("GPR_API_KEY")
+            }
         }
     }
 }
