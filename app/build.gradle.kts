@@ -12,7 +12,7 @@ val githubProperties = Properties()
 githubProperties.load(FileInputStream(rootProject.file("github.properties")))
 
 fun getVersionName(): String {
-    return "0.0.1"
+    return "0.0.1-alpha"
 }
 
 fun getArtificatId(): String {
@@ -75,7 +75,7 @@ publishing {
 
     repositories {
         maven {
-            name = "GitHubPackages"
+            name = "GithubPackages"
             url = uri("https://maven.pkg.github.com/thiaagodev/Jetpack-Brazil-Fields")
             credentials {
                 username = githubProperties["gpr.usr"] as String? ?: System.getenv("GPR_USER")
