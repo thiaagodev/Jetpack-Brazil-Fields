@@ -12,8 +12,8 @@ class CPFValidator {
         fun isValid(cpf: String): Boolean {
             val unmasked = cpf.unmaskCPF()
 
-            val firstNineDigits = unmasked.substring(0, 9)
-            val verifierDigits = unmasked.substring(9, 11)
+            val firstNineDigits = unmasked.take(9)
+            val verifierDigits = unmasked.takeLast(2)
 
             val allDigitsAreEquals = unmasked.all { char -> char == unmasked.first() }
             if(unmasked.length < 11 || allDigitsAreEquals) {

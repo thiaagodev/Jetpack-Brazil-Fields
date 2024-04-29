@@ -1,4 +1,4 @@
-package dev.thiaago.jetpackbrazilfields
+package dev.thiaago.jetpackbrazilfields.validators
 
 import dev.thiaago.jetpackbrazilfields.extensions.isCPF
 import org.junit.Assert.assertEquals
