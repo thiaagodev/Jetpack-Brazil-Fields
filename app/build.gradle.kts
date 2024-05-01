@@ -12,7 +12,7 @@ val githubProperties = Properties()
 githubProperties.load(FileInputStream(rootProject.file("github.properties")))
 
 fun getVersionName(): String {
-    return "0.0.1-alpha"
+    return "1.0.0"
 }
 
 fun getArtificatId(): String {
