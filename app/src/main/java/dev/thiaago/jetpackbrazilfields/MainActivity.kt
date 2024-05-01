@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.thiaago.jetpackbrazilfields.ui.theme.JetpackBrazilFieldsTheme
+import dev.thiaago.jetpackbrazilfields.ui.visualtransformations.CPFVisualTransformation
 import dev.thiaago.jetpackbrazilfields.ui.visualtransformations.MoneyVisualTransformation
 
 class MainActivity : ComponentActivity() {
@@ -55,7 +56,7 @@ private fun MainComposable()  {
                         BorderStroke(2.dp, color = Color.Black),
                         shape = RoundedCornerShape(2.dp)
                     ),
-                    visualTransformation = MoneyVisualTransformation()
+                    visualTransformation = CPFVisualTransformation()
                 )
             }
         }
