@@ -1,5 +1,52 @@
 # Jetpack Brazil Fields
 
+## Validação e formatação de CPF e CNPJ
+
+A lib possui validadores de CPF e CNPJ, que podem ser utilizados chamando suas classes validadoras:
+
+```
+val cpf = "11395212090" // Pode ser passado tanto com máscara quanto sem
+val cpfIsValid = CPFValidator.isValid(cpf)
+
+val cnpj = "20334958000126" // Pode ser passado tanto com máscara quanto sem
+val cnpjIsValid = CNPJValidator.isValid(cnpj)
+```
+
+Ou também você pode utilizar as extensions para String da seguinte forma:
+
+```
+val cpf = "11395212090" 
+val cpfIsValid = cpf.isCPF()
+
+val cnpj = "20334958000126" 
+val cnpjIsValid = cnpj.isCNPJ()
+```
+
+Além da validação, a biblioteca conta com métodos para aplicar e remover as máscaras de CPF e CNPJ:
+
+```
+val cpf = "11395212090".applyCPFMask() // retorno "113.952.120-90"
+cpf.unmaskCPF() // retorno "11395212090"
+
+val cnpj = "20334958000126".applyCNPJMask() // retorno "20.334.958/0001-26"
+cnpj.unmaskCNPJ() // retorno "20334958000126"
+```
+
+## Máscaras de input
+
+Para aplicar máscaras nos seus inputs, basta utlizar as classes de VisualTransformation disponíveis:
+
+```
+// No seu TextField passe o parâmetro visualTransformation 
+
+visualTransformation = CPFVisualTransformation() // Máscara de CPF
+visualTransformation = CNPJVisualTransformation() // Máscara de CNPJ
+
+visualTransformation = MoneyVisualTransformation() // Máscara para valores monetários EX: (Ao digitar 1200 o input irá mostrar: 12,00)
+
+// O MoneyVisualTransformation pode receber um parâmetro currencySymbol para adicionar o símbolo de moeda
+// EX: visualTransformation = MoneyVisualTransformation(currencySymbol="R$") teremos R$12,00
+```
 
 ## Como instalar
 
